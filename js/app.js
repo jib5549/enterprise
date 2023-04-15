@@ -39,6 +39,9 @@ function makeMiddleEarth() {
 
   // 1. create a section tag with an id of middle-earth
 
+  const sectionMiddleEarth = document.createElement('article')
+  sectionMiddleEarth.setAttribute('id','middle-earth')
+
   // 2. use a for loop to iterate over the lands array that does the following:
 
   //   2a. creates an article tag (there should be one for each land when the loop is done)
@@ -48,6 +51,21 @@ function makeMiddleEarth() {
   //   2c. includes an h1 with the name of the land inside each land article
 
   //   2d. appends each land to the middle-earth section
+
+
+//   const lands = [
+//   'The-Shire',
+//   'Rivendell',
+//   'Mordor'
+// ];
+
+  for (let land of lands) {
+    const articleEl = document.createElement('article')
+    articleEl.setAttribute('id', land)
+    articleEl.innerHTML = `<h1>${land}</h1>`
+    sectionMiddleEarth.appendChild(articleEl)
+  }
+  document.body.appendChild(sectionMiddleEarth)
 
   // 3. append the section to the body of the DOM.
 
