@@ -61,7 +61,7 @@ function makeMiddleEarth() {
 
   for (let land of lands) {
     const articleEl = document.createElement('article')
-    articleEl.setAttribute('id', land)
+    articleEl.setAttribute('id', land.toLowerCase())
     articleEl.innerHTML = `<h1>${land}</h1>`
     sectionMiddleEarth.appendChild(articleEl)
   }
@@ -101,7 +101,7 @@ function makeHobbits() {
     hobbitLi.innerText = hobbit
     hobbitsUl.appendChild(hobbitLi)
   }
-  document.querySelector('#The-Shire').appendChild(hobbitsUl)
+  document.querySelector('#the-shire').appendChild(hobbitsUl)
 
   /*
   <ul>
@@ -153,11 +153,26 @@ function keepItSecretKeepItSafe() {
 function makeBaddies() {
   console.log("4: makeBaddies");
 
+  // const baddies = [
+  //   "Sauron",
+  //   "Saruman",
+  //   "The Uruk-hai",
+  //   "Orcs"
+  // ];
+
   // display an unordered list of baddies in Mordor
+  const ulEl = document.createElement('ul')
+  for(let badGuy of baddies) {
+    const liEl = document.createElement('li')
+    liEl.classList.add('baddy')
+    liEl.innerText = badGuy
+    ulEl.appendChild(liEl)
+  }
 
   // give each of the baddies a class of "baddy"
 
   // remember to append them to Mordor
+  document.querySelector('#mordor').appendChild(ulEl)
 
 }
 
@@ -173,8 +188,18 @@ function makeBuddies() {
   console.log("5: makeBuddies");
 
   // create an `aside` tag
+  const asideEl = document.createElement('aside')
 
   // put an `unordered list` of the `'buddies'` in the aside
+  const ulEl = document.createElement('ul')
+  for (let friend of buddies) {
+    const liEl = document.createElement('li')
+    liEl.innerText = friend
+    ulEl.appendChild(liEl)
+  }
+  asideEl.appendChild(ulEl)
+
+  document.querySelector('#rivendell').appendChild(asideEl)
 
   // insert your aside as a child element of `rivendell`
 
@@ -192,6 +217,12 @@ function leaveTheShire() {
   console.log("6: leaveTheShire");
 
   // assemble the `hobbits` and move them to `rivendell`
+  const hobbitEls = document.querySelectorAll('.hobbit')
+  const buddiesEL = document.querySelector('#rivendell > aside > ul')
+
+  for(let hobbit of hobbitEls) {
+    buddiesEL.appendChild(hobbit)
+  }
 }
 
 // COMMIT YOUR WORK
@@ -206,6 +237,8 @@ function beautifulStranger() {
   console.log("7: beautifulStranger");
 
   // change the `'Strider'` text to `'Aragorn'`
+  document.querySelector('#rivendell > aside > ul > li:nth-of-type(4)')
+    .innerText = 'Aragorn'
 }
 
 // COMMIT YOUR WORK
@@ -222,6 +255,16 @@ function forgeTheFellowShip() {
   // add each `hobbit` and `buddy` one at a time to `'the-fellowship'`
   // after each character is added make an alert that they // have joined your party
 
+
+  const theFellowship = document.createElement('div')
+  const peopleAtRivendell = document.querySelectorAll('#rivendell > aside > ul > li')
+
+  for (let person of peopleAtRivendell) {
+    theFellowship.appendChild(person)
+  }
+
+
+  document.querySelector('#rivendell').appendChild(theFellowship)
   // NOTE: This won't change what you see in the browser.  Use your Elements tab of your Inspector tools to make sure that it worked.
 }
 
