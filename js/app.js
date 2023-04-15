@@ -86,6 +86,31 @@ function makeHobbits() {
 
   // display an `unordered list` of hobbits in the shire
 
+
+  // const hobbits = [
+  //   `Frodo Baggins`,
+  //   `Samwise "Sam" Gamgee`,
+  //   `Meriadoc "Merry" Brandybuck`,
+  //   `Peregrin "Pippin" Took`
+  // ];
+
+  const hobbitsUl = document.createElement('ul')
+  for (let hobbit of hobbits) {
+    const hobbitLi = document.createElement('li')
+    hobbitLi.classList.add('hobbit')
+    hobbitLi.innerText = hobbit
+    hobbitsUl.appendChild(hobbitLi)
+  }
+  document.querySelector('#The-Shire').appendChild(hobbitsUl)
+
+  /*
+  <ul>
+    <li>:hobbit:</li>
+    ...
+  </ul>
+  */
+
+
   // give each hobbit a class of `hobbit`
 
   // hint: create a 'ul' outside the loop into which to append the 'li's
@@ -107,10 +132,14 @@ function keepItSecretKeepItSafe() {
 
   // create a div with an id of `'the-ring'`
 
+  const divEl = document.createElement('div')
+  divEl.setAttribute('id', 'the-ring')
+
   // give the div a class of `'magic-imbued-jewelry'`
+  divEl.classList.add('magic-imbued-jewelry')
 
   // add the ring as a child of `Frodo`
-
+  document.querySelector('.hobbit:first-of-type').appendChild(divEl)
 }
 
 // COMMIT YOUR WORK
